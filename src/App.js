@@ -15,17 +15,17 @@ function App() {
 
   async function fetchBooks() {
 
-    const response = await fetch("http://www.testdomain.com/v1/api/books")
+    const response = await fetch("http://www.testdomain.com/v1/api/books") //addig nem tud letoltodni az adat, amig nem all fel a mock server, mi 5 sec
     const responseJSON = await response.json()
     console.log(responseJSON);
 
     setBooks(responseJSON)
-    setLoading(false) //ha letoltotodott az adat itt visszarakjuk false-ra
+    setLoading(false) //ha letoltotodott az adat itt visszarakjuk false-ra, hogy eltunjon a 
   }
 
   useEffect(() => {
-    setLoading(true)
-    fetchBooks()
+    setLoading(true) //eloszor true-ra allitva lenyegeben behozza a LoadingMask-ot
+    fetchBooks() // ha mar betoltheto a fetchBooks akkor azt is behozza (ami falsra alitja a setLoading-ot, eltuntetve a Loadingmaskot) 
   }, [])
   
 function sortBooks() {
